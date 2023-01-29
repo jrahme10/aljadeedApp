@@ -16,7 +16,7 @@ class _InputButtonState extends State<InputButton> {
         fixedSize: Size.fromWidth(MediaQuery.of(context).size.width),
         backgroundColor: const Color.fromARGB(255, 127, 29, 14),
         shape: const BeveledRectangleBorder(borderRadius: BorderRadius.zero),
-        padding: EdgeInsets.fromLTRB(0, 17, 0, 17),
+        padding: const EdgeInsets.fromLTRB(0, 17, 0, 17),
       ),
       child: Text(
         'تسجيل',
