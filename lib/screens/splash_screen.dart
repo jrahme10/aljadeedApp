@@ -12,7 +12,11 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.delayed(Duration(seconds: 6), () {
-      Navigator.pushNamed(context, Routes.news);
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        Routes.news,
+        (Route<dynamic> route) => false,
+      );
     });
   }
 

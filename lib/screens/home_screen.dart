@@ -2,6 +2,7 @@ import 'package:aljadeedapp/widgets/news_watching_now.dart';
 import 'package:blur/blur.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../widgets/latestNews.dart';
 import '../module/card.dart';
@@ -9,8 +10,34 @@ import '../module/cardTitle.dart';
 import '../widgets/customAppBar.dart';
 import '../widgets/homeSwiper.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool listview = true;
+
+  @override
+  void initState() {
+    super.initState();
+    loadView();
+  }
+
+  void loadView() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      listview = prefs.getBool('listview') ?? true;
+    });
+  }
+
+  _setView(bool value) async {
+    final prefs = await SharedPreferences.getInstance();
+    listview = value;
+    await prefs.setBool('listview', value);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +74,31 @@ class HomeScreen extends StatelessWidget {
                   height: 15,
                 ),
 
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          _setView(true);
+                        });
+                      },
+                      child: Text('row view'),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          _setView(false);
+                        });
+                      },
+                      child: Text('column view'),
+                    ),
+                  ],
+                ),
+
                 //trending
                 const Padding(
                   padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -65,7 +117,7 @@ class HomeScreen extends StatelessWidget {
                     enableInfiniteScroll: false,
                   ),
                   itemCount: 3,
-                  itemBuilder: (context, index, realIndex) => const CardModule(
+                  itemBuilder: (context, index, realIndex) => CardModule(
                     listview: true,
                     category: "ثقافة وفن",
                     title:
@@ -80,10 +132,11 @@ class HomeScreen extends StatelessWidget {
                 ),
 
                 //latest news
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                  child: LatestNews(),
-                ),
+                Padding(
+                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    child: LatestNews(
+                      listview: listview,
+                    )),
 
                 const SizedBox(
                   height: 100,

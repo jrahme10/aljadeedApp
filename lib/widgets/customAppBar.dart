@@ -1,4 +1,4 @@
-import 'package:aljadeedapp/routes/routes.dart';
+import '../routes/routes.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -50,7 +50,9 @@ class CustomAppBar extends StatelessWidget {
               ),
               Image.asset('assets/images/aljadeed.png', width: 70),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.live);
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.transparent,
                   shadowColor: Colors.transparent,
