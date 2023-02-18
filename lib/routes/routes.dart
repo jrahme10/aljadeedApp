@@ -1,3 +1,4 @@
+import 'package:aljadeedapp/screens/article_details.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/splash_screen.dart';
@@ -10,6 +11,7 @@ class Routes {
   static const String news = '/home/news';
   static const String register = '/register';
   static const String live = '/live';
+  static const String newsdetails = '/newsdetails';
 }
 
 class AppRouter {
@@ -27,6 +29,9 @@ class AppRouter {
       case Routes.live:
         return MaterialPageRoute(
             builder: (context) => const Live(), settings: settings);
+      case Routes.newsdetails:
+        return MaterialPageRoute(
+            builder: (context) => const ArticleDetails(), settings: settings);
     }
     return null;
   }
