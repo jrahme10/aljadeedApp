@@ -28,6 +28,7 @@ class _CardModuleState extends State<CardModule> {
     return widget.listview
         ? Row(
             mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
@@ -43,9 +44,10 @@ class _CardModuleState extends State<CardModule> {
               ),
               SizedBox(
                 width: screenWidth - 140,
+                height: 100,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       widget.category,

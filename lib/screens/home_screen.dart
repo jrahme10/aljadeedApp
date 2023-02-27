@@ -83,9 +83,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           _setView(true);
                         });
                       },
-                      child: Text('row view'),
+                      child: const Text('row view'),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     ElevatedButton(
@@ -94,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           _setView(false);
                         });
                       },
-                      child: Text('column view'),
+                      child: const Text('column view'),
                     ),
                   ],
                 ),
@@ -111,14 +111,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 CarouselSlider.builder(
                   options: CarouselOptions(
-                    height: 100,
-                    viewportFraction: 0.95,
-                    aspectRatio: 2.0,
+                    viewportFraction: 1,
+                    aspectRatio: 2 / 3,
                     enableInfiniteScroll: false,
                   ),
                   itemCount: 3,
                   itemBuilder: (context, index, realIndex) => CardModule(
-                    listview: true,
+                    listview: listview,
                     category: "ثقافة وفن",
                     title:
                         "مخابرات الجيش وقوّة من مجموعة الشواطئ البحرية التابعة لقوى الأمن …",
@@ -133,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 //latest news
                 Padding(
-                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                     child: LatestNews(
                       listview: listview,
                     )),
