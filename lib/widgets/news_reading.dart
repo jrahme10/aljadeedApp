@@ -14,7 +14,9 @@ class _NewsReadingState extends State<NewsReading>
   @override
   Widget build(BuildContext context) {
     TabController tabController = TabController(length: 3, vsync: this);
+    int? activeTabIndex = 0;
 
+    activeTabIndex = DefaultTabController.of(context)?.index;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -22,71 +24,58 @@ class _NewsReadingState extends State<NewsReading>
         SizedBox(
           width: double.infinity,
           child: TabBar(
+            labelColor: const Color(0xff111111),
+            unselectedLabelColor: const Color(0xff999999),
+            indicatorColor: const Color(0xff000B27),
+            labelStyle: const TextStyle(
+              fontFamily: 'AlmaraiBold',
+              fontSize: 20,
+            ),
             tabs: const [
               Tab(
-                child: Text(
-                  'test',
-                  style: TextStyle(
-                    color: Colors.white,
-                    backgroundColor: Colors.red,
-                  ),
-                ),
+                text: 'الآن',
               ),
               Tab(
-                child: Text(
-                  'test',
-                  style: TextStyle(
-                    color: Colors.white,
-                    backgroundColor: Colors.red,
-                  ),
-                ),
+                text: 'الأبرز',
               ),
               Tab(
-                child: Text(
-                  'test',
-                  style: TextStyle(
-                    color: Colors.white,
-                    backgroundColor: Colors.red,
-                  ),
-                ),
+                text: 'الأكثر قراءة',
               ),
             ],
             controller: tabController,
           ),
         ),
-        // SizedBox(
-        //   width: 100,
-        //   height: 100,
-        //   child: TabBarView(
-        //     controller: tabController,
-        //     children: [
-        //       CardModule(
-        //         listview: true,
-        //         category: "ثقافة وفن",
-        //         title:
-        //             "مخابرات الجيش وقوّة من مجموعة الشواطئ البحرية التابعة لقوى الأمن …",
-        //         date: "مند ساعة",
-        //         image: "assets/images/news_small.png",
-        //       ),
-        //       CardModule(
-        //         listview: true,
-        //         category: "ثقافة وفن",
-        //         title:
-        //             "مخابرات الجيش وقوّة من مجموعة الشواطئ البحرية التابعة لقوى الأمن …",
-        //         date: "مند ساعة",
-        //         image: "assets/images/news_small.png",
-        //       ),
-        //       CardModule(
-        //         listview: true,
-        //         category: "ثقافة وفن",
-        //         title:
-        //             "مخابرات الجيش وقوّة من مجموعة الشواطئ البحرية التابعة لقوى الأمن …",
-        //         date: "مند ساعة",
-        //         image: "assets/images/news_small.png",
-        //       ),
-        //     ],
-        //   ),
-        // ),
+        Expanded(
+          child: TabBarView(
+            controller: tabController,
+            children: [
+              CardModule(
+                listview: true,
+                category: "ثقافة وفن",
+                title:
+                    "مخابرات الجيش وقوّة من مجموعة الشواطئ البحرية التابعة لقوى الأمن …",
+                date: "مند ساعة",
+                image: "assets/images/news_small.png",
+              ),
+              CardModule(
+                listview: true,
+                category: "ثقافة وفن",
+                title:
+                    "مخابرات الجيش وقوّة من مجموعة الشواطئ البحرية التابعة لقوى الأمن …",
+                date: "مند ساعة",
+                image: "assets/images/news_small.png",
+              ),
+              CardModule(
+                listview: true,
+                category: "ثقافة وفن",
+                title:
+                    "مخابرات الجيش وقوّة من مجموعة الشواطئ البحرية التابعة لقوى الأمن …",
+                date: "مند ساعة",
+                image: "assets/images/news_small.png",
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }

@@ -32,54 +32,59 @@ class _CardModuleState extends State<CardModule> {
         Navigator.pushNamed(context, Routes.newsdetails);
       },
       child: widget.listview
-          ? Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: Image.asset(
-                    widget.image,
-                    fit: BoxFit.fill,
-                    width: 100,
+          ? SizedBox(
+              height: 100,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: Image.asset(
+                      widget.image,
+                      fit: BoxFit.fill,
+                      width: 100,
+                      height: 100,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  SizedBox(
+                    width: screenWidth - 140,
                     height: 100,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          widget.category,
+                          style: Theme.of(context).textTheme.labelMedium,
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        Text(
+                          widget.title,
+                          style: Theme.of(context).textTheme.labelLarge,
+                          maxLines: 2,
+                          softWrap: true,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        Text(
+                          widget.date,
+                          style: Theme.of(context).textTheme.labelSmall,
+                          maxLines: 2,
+                          softWrap: true,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                SizedBox(
-                  width: screenWidth - 140,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        widget.category,
-                        style: Theme.of(context).textTheme.labelMedium,
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Text(
-                        widget.title,
-                        style: Theme.of(context).textTheme.labelLarge,
-                        maxLines: 2,
-                        softWrap: true,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Text(
-                        widget.date,
-                        style: Theme.of(context).textTheme.labelSmall,
-                        maxLines: 2,
-                        softWrap: true,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+                ],
+              ),
             )
           : Column(
               crossAxisAlignment: CrossAxisAlignment.start,
