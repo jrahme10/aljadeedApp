@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../routes/routes.dart';
+
 class CardModule extends StatefulWidget {
   const CardModule({
     Key? key,
