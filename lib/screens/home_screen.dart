@@ -1,3 +1,4 @@
+import 'package:aljadeedapp/widgets/news_reading.dart';
 import 'package:aljadeedapp/widgets/news_watching_now.dart';
 import 'package:blur/blur.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -74,6 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 15,
                 ),
 
+                //list view design
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -141,7 +143,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 100,
                 ),
 
+                // watching now
                 const NewsWatchingNow(),
+
+                const SizedBox(
+                  height: 100,
+                ),
+
+                NewsReading(),
               ],
             ),
           ),
