@@ -1,3 +1,4 @@
+import 'package:aljadeedapp/widgets/news_reading.dart';
 import 'package:aljadeedapp/widgets/news_watching_now.dart';
 import 'package:blur/blur.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -74,6 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 15,
                 ),
 
+                //list view design
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -83,9 +85,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           _setView(true);
                         });
                       },
-                      child: Text('row view'),
+                      child: const Text('row view'),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     ElevatedButton(
@@ -94,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           _setView(false);
                         });
                       },
-                      child: Text('column view'),
+                      child: const Text('column view'),
                     ),
                   ],
                 ),
@@ -117,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     enableInfiniteScroll: false,
                   ),
                   itemCount: 3,
-                  itemBuilder: (context, index, realIndex) => CardModule(
+                  itemBuilder: (context, index, realIndex) => const CardModule(
                     listview: true,
                     category: "ثقافة وفن",
                     title:
@@ -133,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 //latest news
                 Padding(
-                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                     child: LatestNews(
                       listview: listview,
                     )),
@@ -142,7 +144,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 100,
                 ),
 
+                // watching now
                 const NewsWatchingNow(),
+
+                const SizedBox(
+                  height: 100,
+                ),
+
+                NewsReading(),
               ],
             ),
           ),

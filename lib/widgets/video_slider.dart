@@ -12,7 +12,7 @@ class _VideoSliderState extends State<VideoSlider> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
@@ -29,27 +29,32 @@ class _VideoSliderState extends State<VideoSlider> {
         const SizedBox(
           height: 30,
         ),
-        CarouselSlider.builder(
-          options: CarouselOptions(
-            viewportFraction: 0.4,
-            enableInfiniteScroll: false,
-            disableCenter: true,
-            enlargeCenterPage: false,
-            pageSnapping: true,
-            height: 207,
-            autoPlayCurve: Curves.easeInOut,
-            scrollPhysics: const ScrollPhysics(
-              parent: AlwaysScrollableScrollPhysics(),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          physics: const PageScrollPhysics(),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+            child: Row(
+              children: [
+                for (var i = 0; i <= 6; i++)
+                  Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image.asset(
+                          'assets/images/movie.jpg',
+                          fit: BoxFit.cover,
+                          height: 210,
+                          width: 140,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      )
+                    ],
+                  ),
+              ],
             ),
-          ),
-          itemCount: 6,
-          itemBuilder: (context, index, realIndex) => Row(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.asset('assets/images/movie.jpg'),
-              ),
-            ],
           ),
         ),
       ],
