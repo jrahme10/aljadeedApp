@@ -1,8 +1,6 @@
 import 'package:aljadeedapp/widgets/latestNews.dart';
 import 'package:flutter/material.dart';
 
-import '../module/card.dart';
-
 class NewsReading extends StatefulWidget {
   const NewsReading({super.key});
 
@@ -119,12 +117,22 @@ class _NewsReadingState extends State<NewsReading> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 100,
-              width: 100,
+            ),
+            Container(
+              height: double.infinity,
+              child: PageView.builder(
+                itemCount: 3, // number of pages
+                itemBuilder: (BuildContext context, int index) {
+                  return LatestNews(
+                    listview: true,
+                  );
+                },
+              ),
             ),
             AnimatedPositioned(
-              duration: Duration(milliseconds: 100),
+              duration: const Duration(milliseconds: 100),
               left: barLeft,
               top: 61,
               width: 76,
@@ -132,7 +140,7 @@ class _NewsReadingState extends State<NewsReading> {
                 width: MediaQuery.of(context).size.width,
                 height: 4,
                 decoration: const BoxDecoration(
-                    color: Colors.red,
+                    color: Color(0xff000B27),
                     borderRadius: BorderRadius.all(Radius.circular(20))),
               ),
             ),
